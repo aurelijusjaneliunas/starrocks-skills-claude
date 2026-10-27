@@ -1,5 +1,5 @@
-CLAUDE_PLUGIN := starrocks-claude.plugin
-CURSOR_MDC := starrocks-cursor.mdc
+CLAUDE_PLUGIN := starrocks-skills-claude.plugin
+CURSOR_MDC := starrocks-skills-cursor.mdc
 SOURCES := skills .claude-plugin README.md LICENSE
 
 .PHONY: build build-claude build-cursor clean
