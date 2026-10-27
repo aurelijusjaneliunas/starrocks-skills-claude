@@ -1,5 +1,5 @@
 ---
-name: starrocks-materialized-views
+name: materialized-views
 description: StarRocks materialized views — synchronous MV (rollup/aggregate acceleration), asynchronous MV (CREATE MATERIALIZED VIEW REFRESH ASYNC/MANUAL/SCHEDULED, partition-aware refresh, query rewrite, nested MVs, MV on Iceberg/Hive external tables), SHOW MATERIALIZED VIEWS, ALTER/REFRESH/DROP MV, transparent query rewrite via EXPLAIN, use_mv hint
 category: materialized-views
 keywords:

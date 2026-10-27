@@ -1,5 +1,5 @@
 ---
-name: starrocks-realtime-analytics
+name: realtime-analytics
 description: StarRocks real-time analytics — Kafka → Routine Load → Primary Key table for sub-second freshness, low-latency BI query patterns, real-time dashboard design (materialized view for pre-aggregation), metric store patterns, window-based freshness for streaming dashboards, colocate join for real-time multi-table queries, resource group isolation for OLAP vs ingestion
 category: realtime-analytics
 keywords:
@@ -355,4 +355,4 @@ def check_rt_freshness(sr_host: str, max_lag_seconds: int = 60) -> None:
 - Async Materialized Views: `docs.starrocks.io/docs/using_starrocks/Materialized_view/`
 - Colocate Join: `docs.starrocks.io/docs/using_starrocks/Colocate_join/`
 - Resource Groups: `docs.starrocks.io/docs/administration/management/resource_management/resource_group/`
-- Related skills: `[[starrocks-routine-load-kafka]]`, `[[starrocks-materialized-views]]`, `[[starrocks-join-optimization]]`, `[[starrocks-concurrency-optimizer]]`
+- Related skills: `[[routine-load-kafka]]`, `[[materialized-views]]`, `[[join-optimization]]`, `[[concurrency-optimizer]]`

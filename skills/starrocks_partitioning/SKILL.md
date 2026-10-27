@@ -1,5 +1,5 @@
 ---
-name: starrocks-partitioning
+name: partitioning
 description: StarRocks partitioning strategy — RANGE partitioning (manual/dynamic/expression), LIST partitioning, dynamic partition properties (enable/time_unit/start/end/prefix/replication_num), partition pruning verification via EXPLAIN, hot/cold tiering with storage_medium, partition lifecycle automation, SHOW PARTITIONS, ADD/DROP/TRUNCATE PARTITION
 category: partitioning
 keywords:

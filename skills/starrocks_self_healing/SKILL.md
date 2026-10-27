@@ -1,5 +1,5 @@
 ---
-name: starrocks-self-healing
+name: self-healing
 description: StarRocks self-healing automation — auto-restart failed Routine Load jobs (detect PAUSED/CANCELLED + RESUME), rebalance tablet distribution after BE add/remove (REBALANCE command), trigger manual compaction for high-score tablets, auto-ANALYZE stale statistics, partition management (auto-drop old partitions), dead load label cleanup, BE disk space alerts + auto-tiering, scheduled health check + remediation agent
 category: self-healing
 keywords:
@@ -452,4 +452,4 @@ dag = starrocks_self_healing()
 - Routine Load management: `docs.starrocks.io/docs/loading/RoutineLoad/#manage-a-routine-load-job`
 - Compaction: `docs.starrocks.io/docs/administration/management/BE_management/compaction/`
 - ANALYZE TABLE: `docs.starrocks.io/docs/sql-reference/sql-statements/data-definition/ANALYZE_TABLE/`
-- Related skills: `[[starrocks-admin-cluster-health]]`, `[[starrocks-admin-compaction]]`, `[[starrocks-routine-load-kafka]]`, `[[starrocks-ai-incident-rca]]`
+- Related skills: `[[admin-cluster-health]]`, `[[admin-compaction]]`, `[[routine-load-kafka]]`, `[[ai-incident-rca]]`

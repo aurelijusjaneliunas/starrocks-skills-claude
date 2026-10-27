@@ -1,5 +1,5 @@
 ---
-name: starrocks-resource-isolation
+name: resource-isolation
 description: "Use when setting up or troubleshooting resource groups, query queues, or big-query circuit breakers — or when a runaway query is starving other workloads. Covers resource group classifier mismatches (queries falling to default_wg), CPU/memory/scan limit calibration from audit log percentiles, SQL blacklist patterns, query queue full rejection errors, and emergency statistics collection disable when BRPC is saturated."
 category: resource-isolation
 keywords:

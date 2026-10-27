@@ -1,5 +1,5 @@
 ---
-name: starrocks-admin-backup-restore
+name: admin-backup-restore
 description: StarRocks backup and restore — CREATE REPOSITORY (S3/HDFS/NFS), BACKUP DATABASE/TABLE, SHOW BACKUP/RESTORE status, RESTORE with partition granularity, cross-cluster restore, incremental backup strategy, snapshot lifecycle, disaster recovery RTO/RPO targets
 category: admin-backup-restore
 keywords:

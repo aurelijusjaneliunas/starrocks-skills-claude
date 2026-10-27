@@ -1,5 +1,5 @@
 ---
-name: starrocks-broker-load
+name: broker-load
 description: StarRocks Broker Load — LOAD DATA from S3/HDFS/GCS/MinIO/Azure, CSV/Parquet/ORC format support, column mapping expressions, multi-table atomic load, SHOW LOAD status polling, CANCEL LOAD, S3 credential patterns (access key/IAM role/instance profile), parallelism tuning, Airflow integration, wildcard file paths
 category: broker-load
 keywords:
@@ -400,4 +400,4 @@ DATA INFILE("s3a://bucket/orders/dt=2024-01-1[0-5]/*.parquet")
 
 - Broker Load docs: `docs.starrocks.io/docs/loading/BrokerLoad/`
 - S3 credentials: `docs.starrocks.io/docs/integrations/loading_tools/AWS_S3/`
-- Related skills: `[[starrocks-stream-load]]`, `[[starrocks-files-ingestion]]`, `[[starrocks-partitioning]]`
+- Related skills: `[[stream-load]]`, `[[files-ingestion]]`, `[[partitioning]]`

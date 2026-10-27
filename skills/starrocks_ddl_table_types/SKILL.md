@@ -1,5 +1,5 @@
 ---
-name: starrocks-ddl-table-types
+name: ddl-table-types
 description: StarRocks table types — Duplicate Key (append-only log/event), Aggregate Key (pre-aggregation metrics), Unique Key (upsert dedup), Primary Key (full DML upsert/delete, MVCC), CREATE TABLE DDL, key column selection, aggregate functions (SUM/MAX/MIN/REPLACE/HLL_UNION/BITMAP_UNION), when to use each type, storage engine differences
 category: ddl-table-types
 keywords:

@@ -1,5 +1,5 @@
 ---
-name: starrocks-cdc-pipeline
+name: cdc-pipeline
 description: StarRocks CDC pipeline — Flink CDC (flink-cdc-connectors) to StarRocks Primary Key table, Debezium + Kafka → Routine Load upsert, StarRocks Flink connector (exactly-once, DELETE semantics), schema change propagation, Debezium envelope parsing, multi-table CDC fan-out, dead letter queue for failed CDC events, lag monitoring
 category: cdc-pipeline
 keywords:
@@ -400,4 +400,4 @@ def get_cdc_lag(kafka_brokers: str, topic: str, sr_host: str, job_name: str) -> 
 - Flink StarRocks connector: `docs.starrocks.io/docs/loading/Flink-connector-starrocks/`
 - Routine Load: `docs.starrocks.io/docs/loading/RoutineLoad/`
 - Flink CDC connectors: `github.com/apache/flink-cdc`
-- Related skills: `[[starrocks-routine-load-kafka]]`, `[[starrocks-stream-load]]`, `[[starrocks-realtime-modeling]]`, `[[cdc-debezium]]`
+- Related skills: `[[routine-load-kafka]]`, `[[stream-load]]`, `[[realtime-modeling]]`, `[[cdc-debezium]]`

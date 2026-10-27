@@ -1,5 +1,5 @@
 ---
-name: starrocks-admin-compaction
+name: admin-compaction
 description: StarRocks compaction tuning — base compaction vs cumulative compaction, compaction score analysis, write amplification reduction, BE config parameters (compaction_threads/min_cumulative_compaction_num_singleton_deltas/max_compaction_candidate_num), SHOW PROC '/compactions' (shared-data only), manual compaction trigger, Primary Key table compaction, rowset management
 category: admin-compaction
 keywords:

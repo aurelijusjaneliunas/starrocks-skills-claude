@@ -1,5 +1,5 @@
 ---
-name: starrocks-ai-query-autotuner
+name: ai-query-autotuner
 description: StarRocks AI query autotuner — autonomous SQL optimization agent workflow (EXPLAIN COSTS → analyze → recommend), materialized view recommendation from slow query log, index recommendation (bitmap/bloom filter), partition pruning diagnosis, join order hints generation, statistics staleness detection and auto-ANALYZE trigger, slow query pattern classification, query rewrite suggestions
 category: ai-query-autotuner
 keywords:
@@ -407,4 +407,4 @@ def parse_fe_audit_log(log_path: str, min_query_time_ms: int = 5000):
 - EXPLAIN COSTS: `docs.starrocks.io/docs/administration/management/Query_management/Cost_based_optimizer/`
 - Query hints: `docs.starrocks.io/docs/sql-reference/sql-statements/hint/`
 - Materialized Views: `docs.starrocks.io/docs/using_starrocks/Materialized_view/`
-- Related skills: `[[starrocks-explain-plan]]`, `[[starrocks-cbo]]`, `[[starrocks-query-optimizer]]`, `[[starrocks-materialized-views]]`
+- Related skills: `[[explain-plan]]`, `[[cbo]]`, `[[query-optimizer]]`, `[[materialized-views]]`

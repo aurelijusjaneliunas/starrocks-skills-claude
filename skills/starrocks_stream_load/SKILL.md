@@ -1,5 +1,5 @@
 ---
-name: starrocks-stream-load
+name: stream-load
 description: StarRocks Stream Load — HTTP PUT API (curl/Python requests), CSV/JSON format parameters (column_separator/jsonpaths/strip_outer_array), columns mapping, partial_update for Primary Key tables, label idempotency, max_filter_ratio, timeout tuning, merge commit mode (3.4+), response JSON parsing, Python bulk loader pattern, error diagnosis
 category: stream-load
 keywords:
@@ -423,4 +423,4 @@ Typical cluster load speed: 100-300 MB/s per BE.
 
 - Stream Load docs: `docs.starrocks.io/docs/loading/StreamLoad/`
 - Partial update: `docs.starrocks.io/docs/loading/Load_to_Primary_Key_tables/`
-- Related skills: `[[starrocks-routine-load-kafka]]`, `[[starrocks-cdc-pipeline]]`, `[[starrocks-ddl-table-types]]`
+- Related skills: `[[routine-load-kafka]]`, `[[cdc-pipeline]]`, `[[ddl-table-types]]`

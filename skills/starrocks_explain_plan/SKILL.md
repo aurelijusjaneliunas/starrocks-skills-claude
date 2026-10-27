@@ -1,5 +1,5 @@
 ---
-name: starrocks-explain-plan
+name: explain-plan
 description: StarRocks EXPLAIN plan reading — EXPLAIN/EXPLAIN VERBOSE/EXPLAIN COSTS output structure, operator nodes (OlapScanNode/HashJoinNode/AggregationNode/ExchangeNode/SortNode/ProjectNode), reading fragment instances, identifying bottlenecks (shuffle exchange cost, large scan rows, memory spill), runtime filter nodes, partition pruning in scan, query profile (SHOW PROFILELIST/EXPLAIN ANALYZE)
 category: explain-plan
 keywords:

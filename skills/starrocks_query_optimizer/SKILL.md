@@ -1,5 +1,5 @@
 ---
-name: starrocks-query-optimizer
+name: query-optimizer
 description: StarRocks query optimization — vectorized execution engine, pipeline execution model, runtime filters (bloom/in/min-max), predicate pushdown, partition pruning, sort merge optimization, query hints (SET_VAR/JOIN hints), session variables for optimizer control, CBO statistics (ANALYZE TABLE/AUTO ANALYZE), query cache, pipeline parallelism tuning
 category: query-optimizer
 keywords:

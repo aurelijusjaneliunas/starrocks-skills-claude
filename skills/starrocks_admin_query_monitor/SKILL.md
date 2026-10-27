@@ -1,5 +1,5 @@
 ---
-name: starrocks-admin-query-monitor
+name: admin-query-monitor
 description: StarRocks query monitoring and resource management — slow query log, SHOW PROCESSLIST, information_schema.query_history, resource groups (CREATE RESOURCE GROUP), classifiers, CPU/memory/concurrency limits, query queuing, KILL QUERY, workload isolation, Audit Loader plugin
 category: admin-query-monitor
 keywords:

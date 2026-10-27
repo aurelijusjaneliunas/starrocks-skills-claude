@@ -1,5 +1,5 @@
 ---
-name: starrocks-data-quality-guardian
+name: data-quality-guardian
 description: StarRocks data quality — freshness queries (MAX(updated_at) vs expected SLA), duplicate detection on Primary Key tables, null anomaly SQL (column-level null rate vs baseline), volume drift detection (day-over-day ratio), cross-table referential integrity checks, data completeness for partitions, StarRocks-specific quality checks (tablet health, compaction lag, replication factor), Python DQ scan class
 category: data-quality-guardian
 keywords:
@@ -444,4 +444,4 @@ PROPERTIES ("enable_persistent_index" = "true");
 
 - StarRocks system tables: `docs.starrocks.io/docs/reference/information_schema/`
 - SHOW TABLET: `docs.starrocks.io/docs/sql-reference/sql-statements/cluster-management/tablet_replica/SHOW_TABLET/`
-- Related skills: `[[airflow-starrocks-data-quality]]`, `[[starrocks-admin-cluster-health]]`, `[[starrocks-admin-query-monitor]]`, `[[soda-core]]`, `[[great-expectations]]`
+- Related skills: `[[airflow-starrocks-data-quality]]`, `[[admin-cluster-health]]`, `[[admin-query-monitor]]`, `[[soda-core]]`, `[[great-expectations]]`

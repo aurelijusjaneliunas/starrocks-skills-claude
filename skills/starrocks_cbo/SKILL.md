@@ -1,5 +1,5 @@
 ---
-name: starrocks-cbo
+name: cbo
 description: StarRocks cost-based optimizer — ANALYZE TABLE (full/sample/histogram/predicate columns), AUTO ANALYZE configuration, statistics storage (_statistics_ database), SHOW ANALYZE STATUS, stale statistics detection, cardinality estimation failures, CBO join hints (LEADING/broadcast/shuffle), EXPLAIN COSTS reading, multi-column statistics (3.5+)
 category: cbo
 keywords:
@@ -491,4 +491,4 @@ Use when: queries filter on two correlated columns and CBO picks wrong join stra
 - StarRocks CBO docs: `docs.starrocks.io/docs/using_starrocks/Cost_based_optimizer/`
 - ANALYZE TABLE reference: `docs.starrocks.io/docs/sql-reference/sql-statements/data-definition/ANALYZE_TABLE/`
 - Statistics best practices: `docs.starrocks.io/docs/best_practices/`
-- Related skills: `[[starrocks-explain-plan]]`, `[[starrocks-query-optimizer]]`, `[[starrocks-join-optimization]]`
+- Related skills: `[[explain-plan]]`, `[[query-optimizer]]`, `[[join-optimization]]`

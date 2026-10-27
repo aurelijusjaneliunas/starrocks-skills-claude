@@ -1,5 +1,5 @@
 ---
-name: starrocks-admin-storage-balancer
+name: admin-storage-balancer
 description: StarRocks storage balancing — tablet distribution across BEs, disk skew detection (SHOW BACKENDS disk usage), cluster_balance analysis (SHOW PROC '/cluster_balance'), balance_load_score_threshold tuning, tablet migration monitoring, BE decommission, adding new BE nodes, storage capacity forecasting, imbalance alerts
 category: admin-storage-balancer
 keywords:

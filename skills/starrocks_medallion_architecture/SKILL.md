@@ -1,5 +1,5 @@
 ---
-name: starrocks-medallion-architecture
+name: medallion-architecture
 description: StarRocks Medallion (Bronze/Silver/Gold) architecture — Bronze raw ingestion (Duplicate Key), Silver cleansed layer (Primary Key upsert/dedup), Gold aggregated layer (Aggregate Key or MV), incremental transform patterns (INSERT OVERWRITE partition, watermark-based), layer DDL patterns, CDC Bronze landing, dbt-compatible layer design, inter-layer INSERT SELECT pipelines
 category: medallion-architecture
 keywords:
@@ -349,4 +349,4 @@ dag = medallion_pipeline()
 - StarRocks table types: `docs.starrocks.io/docs/table_design/table_types/`
 - INSERT OVERWRITE: `docs.starrocks.io/docs/loading/InsertInto/`
 - Materialized Views: `docs.starrocks.io/docs/using_starrocks/Materialized_view/`
-- Related skills: `[[starrocks-ddl-table-types]]`, `[[starrocks-partitioning]]`, `[[starrocks-materialized-views]]`, `[[starrocks-cdc-pipeline]]`, `[[medallion-architecture]]`
+- Related skills: `[[ddl-table-types]]`, `[[partitioning]]`, `[[materialized-views]]`, `[[cdc-pipeline]]`, `[[medallion-architecture]]`

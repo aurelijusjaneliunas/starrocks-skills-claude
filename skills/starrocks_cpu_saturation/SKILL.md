@@ -1,5 +1,5 @@
 ---
-name: starrocks-cpu-saturation
+name: cpu-saturation
 description: "Use as the first stop when a BE or FE host shows high CPU (elevated load average or top near 100%). Attributes CPU to the right workload — query pipeline, import flush/compression, compaction threads, background tasks, FE GC, or non-StarRocks processes — then hands off to the appropriate deep-dive skill (query/import/compaction/node). Does not resolve root causes directly; acts as a triage and attribution layer."
 category: cpu-saturation
 keywords:

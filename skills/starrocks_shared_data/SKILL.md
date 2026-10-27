@@ -1,5 +1,5 @@
 ---
-name: starrocks-shared-data
+name: shared-data
 description: "Use for shared-data (lake-mode / cloud-native) deployments only — not for shared-nothing. Covers DataCache corruption and autoscaling-induced compaction regressions, S3 multipart upload failures and 503 rate limiting, FE leader switch causing in-flight transaction loss, compaction score management via be_cloud_native_compactions, and cached tablet metadata inconsistencies causing publish failures."
 category: shared-data
 keywords:

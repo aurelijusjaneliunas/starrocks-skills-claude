@@ -1,5 +1,5 @@
 ---
-name: starrocks-node
+name: node
 description: "Use when a BE or FE node is abnormal: BE out-of-memory or crash, FE deadlock causing all queries to hang, FE Full GC pauses, or FE heap memory growth and leak. Covers mem_tracker curl analysis, large-memory-alloc log search (query_id → SQL), jstack + DeadLockChecker deadlock tracing, GC log analysis, and memory allocation flame graph interpretation."
 category: node
 keywords:

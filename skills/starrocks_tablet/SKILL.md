@@ -1,5 +1,5 @@
 ---
-name: starrocks-tablet
+name: tablet
 description: "Use when investigating tablet-level structural problems: data skew (one tablet 10× larger than peers), too many tablet versions blocking writes (too many versions error), error-state replicas, over-sharding causing high FE metadata overhead, or disk balance retry loops. Covers SHOW TABLET analysis, be_tablets SQL queries, bucket key optimization, and tablet health thresholds (VersionCount, DataSize variance, num_rowset)."
 category: tablet
 keywords:

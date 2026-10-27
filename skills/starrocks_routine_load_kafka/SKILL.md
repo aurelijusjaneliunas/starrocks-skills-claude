@@ -1,5 +1,5 @@
 ---
-name: starrocks-routine-load-kafka
+name: routine-load-kafka
 description: StarRocks Routine Load for Kafka — CREATE ROUTINE LOAD DDL (all PROPERTIES/KAFKA clause parameters), JSON/CSV/Avro format config, desired_concurrent_number tuning, SHOW ROUTINE LOAD columns, PAUSE/RESUME/ALTER/STOP, consumer lag monitoring, error log analysis, exactly-once semantics, Schema Registry for Avro, Kafka SASL/SSL config, idempotent upsert to Primary Key table
 category: routine-load-kafka
 keywords:
@@ -399,4 +399,4 @@ actual_concurrency = min(
 
 - Routine Load docs: `docs.starrocks.io/docs/loading/RoutineLoad/`
 - Kafka connector: `docs.starrocks.io/docs/loading/Kafka-connector-starrocks/`
-- Related skills: `[[starrocks-stream-load]]`, `[[starrocks-cdc-pipeline]]`, `[[starrocks-realtime-modeling]]`
+- Related skills: `[[stream-load]]`, `[[cdc-pipeline]]`, `[[realtime-modeling]]`

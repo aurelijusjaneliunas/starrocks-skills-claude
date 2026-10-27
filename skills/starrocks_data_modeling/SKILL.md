@@ -1,5 +1,5 @@
 ---
-name: starrocks-data-modeling
+name: data-modeling
 description: StarRocks data modeling — star schema vs wide table design, fact/dimension DDL patterns, denormalization strategy for OLAP, bitmap indexes, bloom filter indexes, sort key optimization, schema review checklist, SCD type 2 with Primary Key table, aggregation table design, BI acceleration patterns, avoiding over-normalization
 category: data-modeling
 keywords:

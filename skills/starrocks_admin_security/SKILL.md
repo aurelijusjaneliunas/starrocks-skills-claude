@@ -1,5 +1,5 @@
 ---
-name: starrocks-admin-security
+name: admin-security
 description: StarRocks security and RBAC — CREATE USER/ROLE, GRANT/REVOKE privileges (catalog/database/table/view/MV/function/resource group level), built-in roles (cluster_admin/db_admin/user_admin/public), LDAP/LDAP group auth, row-level security policies, column masking, SSL/TLS, audit log, privilege inheritance, security best practices
 category: admin-security
 keywords:

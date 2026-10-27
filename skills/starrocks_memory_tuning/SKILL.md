@@ -1,5 +1,5 @@
 ---
-name: starrocks-memory-tuning
+name: memory-tuning
 description: StarRocks memory tuning — BE memory architecture (mem_limit, query pool, load pool, compaction pool, metadata cache), query memory limits (query_mem_limit session var), memory spill to disk (spill_mode), OOM analysis (be.out log), mem_tracker hierarchy, FE heap tuning (JAVA_OPTS), Primary Key table persistent index memory, jemalloc tuning
 category: memory-tuning
 keywords:

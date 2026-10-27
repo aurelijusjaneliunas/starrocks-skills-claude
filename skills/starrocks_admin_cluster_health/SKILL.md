@@ -1,5 +1,5 @@
 ---
-name: starrocks-admin-cluster-health
+name: admin-cluster-health
 description: StarRocks cluster health monitoring — FE/BE/CN node status, tablet health, replica status, compaction backlog, storage imbalance, SHOW commands, system tables (information_schema/sys), alert thresholds, FE quorum checks, BE disk usage, dead replica detection, Prometheus metrics
 category: admin-cluster-health
 keywords:

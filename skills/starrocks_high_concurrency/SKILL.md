@@ -1,5 +1,5 @@
 ---
-name: starrocks-high-concurrency
+name: high-concurrency
 description: "Use when optimizing for high-QPS (thousands of queries/sec) workloads or diagnosing throughput plateaus and latency spikes under load. Covers pipeline_dop=1 tuning, connection pooling (HikariCP/Druid), PreparedStatement plan caching, query cache hit-rate analysis, PK model point-query optimization (short-circuit scan, persistent index), and detecting session-level timeout overrides that cause memory volatility."
 category: high-concurrency
 keywords:

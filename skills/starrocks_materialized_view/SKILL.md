@@ -1,5 +1,5 @@
 ---
-name: starrocks-materialized-view
+name: materialized-view
 description: "Use when async materialized views are failing to refresh, timing out, becoming inactive, or query rewrite is not triggering. Covers refresh OOM (spill-to-disk), timeout tuning, MV reactivation, staleness tolerance for query rewrite, sync MV hit verification via EXPLAIN, FE restart impact on refresh schedules, and S3 rate limiting during refresh."
 category: materialized-view
 keywords:

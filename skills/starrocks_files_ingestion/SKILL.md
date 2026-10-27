@@ -1,5 +1,5 @@
 ---
-name: starrocks-files-ingestion
+name: files-ingestion
 description: StarRocks file ingestion — FILES() table function (SELECT/INSERT from S3/HDFS Parquet/ORC/CSV without CREATE TABLE), Iceberg external catalog (HMS/Glue/REST), CREATE EXTERNAL CATALOG, cross-catalog INSERT INTO SELECT, schema auto-detection, partition filter pushdown on external tables, SHOW CREATE CATALOG, external table DDL patterns
 category: files-ingestion
 keywords:
@@ -228,4 +228,4 @@ DROP CATALOG iceberg_hms;
 - FILES() function: `docs.starrocks.io/docs/sql-reference/sql-functions/table-functions/files/`
 - Iceberg catalog: `docs.starrocks.io/docs/data_source/catalog/iceberg/iceberg_catalog/`
 - Hive catalog: `docs.starrocks.io/docs/data_source/catalog/hive_catalog/`
-- Related skills: `[[starrocks-broker-load]]`, `[[starrocks-lakehouse-integration]]`, `[[starrocks-partitioning]]`
+- Related skills: `[[broker-load]]`, `[[lakehouse-integration]]`, `[[partitioning]]`
