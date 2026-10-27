@@ -30,6 +30,8 @@ related_cases:
 - case-003-fe-deadlock
 ---
 
+> **Scope:** Incident-troubleshooting runbook for shared-nothing compaction problems (import pile-up, DELETE version explosion, non-self-triggering base compaction). For compaction architecture, BE config reference, PK-table internals, manual trigger commands, and Grafana/Prometheus setup, see [`../starrocks_admin_compaction/SKILL.md`](../starrocks_admin_compaction/SKILL.md).
+
 # Compaction Troubleshooting (Shared-Nothing)
 
 This skill applies to **shared-nothing** deployments only.
@@ -111,7 +113,10 @@ starrocks_be_tablet_update_max_compaction_score
 
 ```sql
 -- There is no SHOW PROC path for compaction scores in shared-nothing mode.
--- (SHOW PROC '/compactions' exists but is shared-data only — it reads lake CompactionMgr history.)
+-- `SHOW PROC '/compactions'` exists, but it is shared-data only (FE-scheduled, CN-executed
+-- compaction; columns are Partition/TxnID/StartTime/CommitTime/FinishTime/Error/Profile —
+-- there is no TabletId/BackendId/score column). It does not read or expose
+-- shared-nothing BE-level tablet compaction scores at all, in any version 3.0–3.5.
 
 -- Infer per-BE pressure from be_tablets instead:
 SELECT be_id,
@@ -685,7 +690,7 @@ Static parameters (`*_num_threads_per_disk` for non-PK) must be in `be.conf` and
 
 ## Cross-Skill Guides
 
-- [`guides/cascade-cluster-degradation.md`](../guides/cascade-cluster-degradation.md) — Full cascade: compaction backlog → import slow → BE OOM → FE deadlock. Read this when multiple symptoms appear simultaneously across skills.
+- [`../starrocks_guides/cascade-cluster-degradation.md`](../starrocks_guides/cascade-cluster-degradation.md) — Full cascade: compaction backlog → import slow → BE OOM → FE deadlock. Read this when multiple symptoms appear simultaneously across skills.
 
 ---
 

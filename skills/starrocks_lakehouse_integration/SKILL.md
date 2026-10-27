@@ -247,6 +247,10 @@ WHERE dt = '2024-01-15';
 -- Look for: partitions=1/365 in IcebergScanNode
 ```
 
+Filters that DON'T push down:
+- Function wrapping: `WHERE YEAR(dt) = 2024` — use `WHERE dt >= '2024-01-01'` instead
+- Non-partition columns: only partition key columns benefit from pruning
+
 ---
 
 ## Statistics on External Tables

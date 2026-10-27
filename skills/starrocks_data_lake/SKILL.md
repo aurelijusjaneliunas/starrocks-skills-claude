@@ -27,6 +27,8 @@ related_cases:
 
 # Data Lake / External Table Troubleshooting
 
+> For initial catalog setup rather than connectivity troubleshooting, see [`../starrocks_lakehouse_integration/SKILL.md`](../starrocks_lakehouse_integration/SKILL.md) and [`../starrocks_files_ingestion/SKILL.md`](../starrocks_files_ingestion/SKILL.md).
+
 Investigation guide for Hive Metastore connectivity, Kerberos authentication, HDFS/S3
 access errors, and external catalog query failures.
 

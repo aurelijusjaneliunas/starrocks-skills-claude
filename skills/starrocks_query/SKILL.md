@@ -29,6 +29,8 @@ related_cases:
 - case-003-fe-deadlock
 ---
 
+> **Scope:** This is an incident-troubleshooting runbook for live query problems — hangs, scan skew, join OOM, and runtime filter issues. See also: [`../starrocks_query_optimizer/SKILL.md`](../starrocks_query_optimizer/SKILL.md) for CBO internals and execution/hint tuning, and [`../starrocks_explain_plan/SKILL.md`](../starrocks_explain_plan/SKILL.md) for EXPLAIN syntax and reading plan output.
+
 # Query Troubleshooting
 
 Investigation guide for query hangs, slow queries, profile analysis, scan performance,

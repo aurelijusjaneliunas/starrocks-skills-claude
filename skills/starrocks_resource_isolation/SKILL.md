@@ -16,6 +16,8 @@ related_cases:
 - case-015-memory-volatility
 ---
 
+> **Scope:** This is an incident-troubleshooting runbook for resource-group and query-queue causes — classifier mismatches, limit calibration, blacklist patterns, and queue rejections. For broader monitoring/admin reference (SHOW PROCESSLIST, slow query log, KILL QUERY, Audit Loader, with resource groups as one topic), see [`../starrocks_admin_query_monitor/SKILL.md`](../starrocks_admin_query_monitor/SKILL.md).
+
 # Resource Isolation, Query Queue, and Query Governance
 
 Investigation guide for resource groups, query queues, big-query circuit breakers, and SQL

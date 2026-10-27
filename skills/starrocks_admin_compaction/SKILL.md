@@ -1,7 +1,9 @@
 ---
 name: starrocks-admin-compaction
-description: StarRocks compaction tuning — base compaction vs cumulative compaction, compaction score analysis, write amplification reduction, BE config parameters (compaction_threads/min_cumulative_compaction_num_singleton_deltas/max_compaction_candidate_num), SHOW PROC '/compactions', manual compaction trigger, Primary Key table compaction, rowset management
+description: StarRocks compaction tuning — base compaction vs cumulative compaction, compaction score analysis, write amplification reduction, BE config parameters (compaction_threads/min_cumulative_compaction_num_singleton_deltas/max_compaction_candidate_num), SHOW PROC '/compactions' (shared-data only), manual compaction trigger, Primary Key table compaction, rowset management
 ---
+
+> **Scope:** Reference/admin guide for compaction architecture, BE config parameters, Primary Key table compaction internals, manual trigger commands, and Grafana/Prometheus monitoring setup. For an incident-troubleshooting runbook (import pile-up, batch-DELETE version explosion, large-tablet base compaction not self-triggering) in shared-nothing deployments, see [`../starrocks_compaction/SKILL.md`](../starrocks_compaction/SKILL.md).
 
 # StarRocks Compaction Administration
 
@@ -85,46 +87,42 @@ base_score ≈ total_rowset_count / base_compaction_num_rows_per_rowset
 
 ## Reading Compaction State
 
-### SHOW PROC '/compactions'
+### SHOW PROC '/compactions' — shared-data clusters only
+
+> **Deployment scope:** `SHOW PROC '/compactions'` is a **shared-data-only** statement. It reads
+> FE's `CompactionMgr` history for FE-scheduled, CN-executed compaction transactions and has no
+> equivalent for shared-nothing BE-level tablet compaction in any StarRocks 3.0–3.5 release. For
+> shared-nothing compaction state, use BE/FE Prometheus metrics (see
+> [Monitoring Compaction](#monitoring-compaction) below) or `information_schema.be_tablets`,
+> not this statement — it will run without error on a shared-nothing cluster but returns an
+> empty or meaningless result since there is no lake compaction history to show.
 
 ```sql
 SHOW PROC '/compactions';
 ```
 
-Returns a row per tablet replica undergoing or queued for compaction.
+Returns a row per compaction transaction scheduled by the FE for a lake (shared-data) partition.
 
-| Column | Type | Meaning |
-|---|---|---|
-| `TabletId` | BIGINT | Tablet identifier |
-| `ReplicaId` | BIGINT | Replica identifier on a specific BE |
-| `BackendId` | BIGINT | BE node hosting this replica |
-| `SchemaHash` | BIGINT | Schema version hash |
-| `Versions` | VARCHAR | Version range of the compaction (e.g. `[2-45]`) |
-| `RowSetsNum` | INT | Number of rowsets being merged |
-| `SegmentsNum` | INT | Total segment files involved |
-| `InputRowsCount` | BIGINT | Rows read from input rowsets |
-| `InputRowsDataSize` | BIGINT | Bytes read |
-| `OutputRowsCount` | BIGINT | Rows after merge (lower = deletes resolved) |
-| `OutputRowsDataSize` | BIGINT | Bytes written |
-| `TotalReadIOBytes` | BIGINT | I/O read bytes including index |
-| `TotalWriteIOBytes` | BIGINT | I/O write bytes |
-| `TotalSegmentCount` | INT | Output segment count |
-| `StartTime` | DATETIME | When this compaction task started |
-| `State` | VARCHAR | `RUNNING`, `SUCCESS`, `FAILED`, `CANCELLED` |
-| `Progress` | INT | Percentage complete (0-100) |
-| `Type` | VARCHAR | `BASE` or `CUMULATIVE` |
+| Column | Meaning |
+|---|---|
+| `Partition` | The partition the compaction task belongs to |
+| `TxnID` | Transaction ID assigned to the compaction task |
+| `StartTime` | When the compaction task started; `NULL` if not yet started |
+| `CommitTime` | When the compaction task committed its data; `NULL` if not yet committed |
+| `FinishTime` | When the compaction task published its data; `NULL` if not yet published |
+| `Error` | Error message, if any |
+| `Profile` | Detailed execution metrics in JSON (sub-task count, read/write sizes, segment counts, scores) — supported from v3.2.12 / v3.3.4 |
 
 **Interpretation patterns:**
 
 ```sql
--- Check for long-running compaction tasks (> 10 minutes)
+-- Check for long-running compaction tasks (StartTime set, FinishTime still NULL)
 SHOW PROC '/compactions';
--- Filter State = RUNNING with old StartTime
 
--- Stuck compaction: same TabletId in RUNNING for > 30 minutes
--- → suspect disk I/O saturation or a corrupt segment
+-- Stuck compaction: same Partition/TxnID with StartTime set but no CommitTime/FinishTime
+-- for an extended period → suspect CN-side stall or disk I/O saturation
 
--- Many FAILED entries → check BE log: grep 'compact' be.WARNING
+-- Non-NULL Error column → check CN log and information_schema.be_cloud_native_compactions
 ```
 
 ### SHOW TABLET — Per-Tablet Compaction Status
@@ -449,10 +447,8 @@ ALTER TABLE db_name.table_name COMPACT BASE;
 `ALTER TABLE ... COMPACT` is **asynchronous**. The statement returns immediately; compaction runs in background. Monitor progress with:
 
 ```sql
--- Check if compaction has started
-SHOW PROC '/compactions';
-
--- Or query information_schema
+-- NOTE: `SHOW PROC '/compactions'` does NOT cover this — it is shared-data only.
+-- For shared-nothing manual compaction, query information_schema instead:
 SELECT tablet_id, state, compaction_type, start_time
 FROM information_schema.be_compactions
 WHERE state = 'RUNNING'

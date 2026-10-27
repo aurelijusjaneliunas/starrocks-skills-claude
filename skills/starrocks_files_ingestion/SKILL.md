@@ -92,67 +92,7 @@ FROM FILES(
 
 ## Iceberg External Catalog
 
-### Create Catalog — Hive Metastore
-
-```sql
-CREATE EXTERNAL CATALOG iceberg_hms
-PROPERTIES (
-    "type" = "iceberg",
-    "iceberg.catalog.type" = "hive",
-    "hive.metastore.uris" = "thrift://metastore.internal:9083",
-    -- S3 credentials for data files
-    "aws.s3.use_instance_profile" = "true",
-    "aws.s3.region" = "us-east-1"
-);
-```
-
-### Create Catalog — AWS Glue
-
-```sql
-CREATE EXTERNAL CATALOG iceberg_glue
-PROPERTIES (
-    "type" = "iceberg",
-    "iceberg.catalog.type" = "glue",
-    "aws.glue.use_instance_profile" = "true",
-    "aws.glue.region" = "us-east-1",
-    "aws.s3.use_instance_profile" = "true",
-    "aws.s3.region" = "us-east-1"
-);
-```
-
-### Create Catalog — REST Catalog (Polaris/Tabular/Nessie)
-
-```sql
-CREATE EXTERNAL CATALOG iceberg_rest
-PROPERTIES (
-    "type" = "iceberg",
-    "iceberg.catalog.type" = "rest",
-    "iceberg.catalog.uri" = "https://polaris.internal/api/catalog",
-    "iceberg.catalog.warehouse" = "my_warehouse",
-    -- OAuth2 authentication
-    "iceberg.catalog.security" = "oauth2",
-    "iceberg.catalog.oauth2.credential" = "client_id:client_secret",
-    "iceberg.catalog.oauth2.scope" = "PRINCIPAL_ROLE:ALL",
-    -- S3 credentials for data
-    "aws.s3.use_instance_profile" = "true",
-    "aws.s3.region" = "us-east-1"
-);
-```
-
-### Create Catalog — MinIO + HMS
-
-```sql
-CREATE EXTERNAL CATALOG iceberg_minio
-PROPERTIES (
-    "type" = "iceberg",
-    "iceberg.catalog.type" = "hive",
-    "hive.metastore.uris" = "thrift://metastore:9083",
-    "aws.s3.access_key" = "minio_user",
-    "aws.s3.secret_key" = "minio_password",
-    "aws.s3.endpoint" = "http://minio.internal:9000",
-    "aws.s3.enable_path_style_access" = "true"
-);
-```
+To query Iceberg tables (rather than raw files) from StarRocks, create an external catalog backed by Hive Metastore, AWS Glue, a REST catalog (Polaris/Tabular/Nessie), or MinIO+HMS. For full `CREATE EXTERNAL CATALOG` setup examples for each of these, see [`../starrocks_lakehouse_integration/SKILL.md`](../starrocks_lakehouse_integration/SKILL.md#iceberg-catalog-setup).
 
 ---
 
@@ -215,24 +155,7 @@ WHERE created_at >= (
 
 ## Partition Filter Pushdown
 
-StarRocks pushes partition filters down to the Iceberg metadata layer, skipping files not matching the predicate:
-
-```sql
--- Partition filter on dt column — only reads matching Iceberg partitions
-SELECT COUNT(*) FROM iceberg_hms.analytics.events
-WHERE dt = '2024-01-15';
--- EXPLAIN shows: partitions=1/365
-```
-
-Verify with EXPLAIN:
-```sql
-EXPLAIN SELECT * FROM iceberg_hms.analytics.events WHERE dt = '2024-01-15';
--- Look for: "partitions=1/365" in IcebergScanNode
-```
-
-Filters that DON'T push down:
-- Function wrapping: `WHERE YEAR(dt) = 2024` — use `WHERE dt >= '2024-01-01'` instead
-- Non-partition columns: only partition key columns benefit from pruning
+StarRocks pushes WHERE filters on partition columns down to the Iceberg/Hive metadata layer, skipping non-matching files — always verify with `EXPLAIN` (look for `partitions=N/total` in the scan node) and avoid wrapping the partition column in a function. For full details, see [`../starrocks_lakehouse_integration/SKILL.md`](../starrocks_lakehouse_integration/SKILL.md#partition-filter-pushdown).
 
 ---
 
@@ -257,38 +180,13 @@ LIMIT 1000;
 
 ## Schema Evolution Handling
 
-StarRocks handles Iceberg schema evolution transparently:
-- Added columns: appear as NULL in StarRocks query if not backfilled
-- Dropped columns: hidden, not returned in SELECT *
-- Renamed columns: new name appears in StarRocks
-
-For type widening (INT → BIGINT): StarRocks reads with new type automatically.
+StarRocks handles Iceberg schema evolution transparently (added/dropped/renamed columns, type widening); type narrowing may error. For the full behavior table, see [`../starrocks_lakehouse_integration/SKILL.md`](../starrocks_lakehouse_integration/SKILL.md#iceberg-schema-evolution-handling).
 
 ---
 
 ## Writing Back to Iceberg (StarRocks 3.1+)
 
-StarRocks can write to Iceberg catalogs it manages:
-
-```sql
--- Create Iceberg database
-CREATE DATABASE iceberg_hms.new_db;
-
--- Create Iceberg table via StarRocks
-CREATE TABLE iceberg_hms.analytics.orders_gold (
-    order_id BIGINT,
-    customer_id BIGINT,
-    revenue DECIMAL(18, 2),
-    dt DATE
-)
-PARTITION BY (dt);
-
--- Write to Iceberg table
-INSERT INTO iceberg_hms.analytics.orders_gold
-SELECT order_id, customer_id, SUM(amount), DATE(created_at)
-FROM iceberg_hms.raw.orders
-GROUP BY 1, 2, 4;
-```
+StarRocks (3.1+) can `CREATE DATABASE`/`CREATE TABLE` and `INSERT INTO` Iceberg catalogs it manages, letting you write transformed/aggregated results straight back to the lakehouse. For full setup and an example, see [`../starrocks_lakehouse_integration/SKILL.md`](../starrocks_lakehouse_integration/SKILL.md#writing-back-to-iceberg-starrocks-31).
 
 ---
 

@@ -23,6 +23,11 @@ Investigation and tuning guide for high-QPS workloads: data modeling, primary-ke
 optimization, query cache, pipeline parallelism, connection pooling, and emergency
 load disabling.
 
+> This is an incident-triage runbook: symptom → check → root cause → immediate fix.
+> For the deeper architecture, tuning theory, resource-group design, and capacity
+> planning behind these levers, see
+> [`../starrocks_concurrency_optimizer/SKILL.md`](../starrocks_concurrency_optimizer/SKILL.md).
+
 Five root causes account for most high-concurrency performance problems:
 
 - **Cause A** — Connection pool exhausted (too many connections, no client pool)
@@ -125,7 +130,7 @@ grep "query_timeout" fe/log/fe.log | grep "set.*session" | tail -20
 
 **Key rules for interpretation**:
 
-1. If `pipeline_dop` is auto (0) on a system with many vCPUs, short queries spawn too many threads per query — the scheduling overhead exceeds query execution time. Always set `pipeline_dop = 1` for high-QPS OLTP workloads.
+1. If `pipeline_dop` is auto (0) on a system with many vCPUs, short queries spawn too many threads per query — the scheduling overhead exceeds query execution time. Always set `pipeline_dop = 1` for high-QPS OLTP workloads. (For why auto-DOP does this and how to size `pipeline_dop` for your concurrency tier, see [`../starrocks_concurrency_optimizer/SKILL.md`](../starrocks_concurrency_optimizer/SKILL.md#1-pipeline-dop-degree-of-parallelism).)
 2. Query cache hit ratio below 10% means the workload is not cache-friendly — common with high-cardinality `GROUP BY` or pre-shuffle aggregation. Do not allocate more cache capacity; fix the workload pattern.
 3. Connection exhaustion (`qe_max_connection`) is a hard limit — new clients receive immediate rejection. This is different from query queue (which waits). Check both.
 4. `MemCostBytes` outliers in audit log that do not appear in the query latency P99 are likely queries with session-level timeout overrides that run for hours without being killed.
@@ -226,7 +231,7 @@ wc -l /tmp/qtimes.txt
 - `SELECT COUNT(*) FROM information_schema.processlist` is near or at `qe_max_connection`
 - Client applications do not use connection pooling (verified by connection creation patterns in audit)
 
-**Mechanism**: FE enforces `qe_max_connection` as a hard limit on simultaneous MySQL protocol connections. Without client-side connection pooling, each request opens and closes a TCP connection, which both exhausts the FE limit and adds round-trip overhead. Under bursty load (dashboard refreshes, batch job starts), the FE connection queue fills instantly.
+**Mechanism**: FE enforces `qe_max_connection` as a hard limit on simultaneous MySQL protocol connections. Without client-side connection pooling, each request opens and closes a TCP connection, exhausting the FE limit under bursty load. For the full FE connection-handling model (per-FE limits across a multi-FE deployment, `wait_timeout` alignment, HikariCP pool sizing guidance), see [`../starrocks_concurrency_optimizer/SKILL.md`](../starrocks_concurrency_optimizer/SKILL.md#4-fe-connection-handling).
 
 **Actions**:
 
@@ -306,7 +311,7 @@ ADMIN SET FRONTEND CONFIG ("enable_statistic_collect" = "false");
 - Queries are short (sub-second expected) but actual latency is much higher
 - System QPS is lower than expected given available CPU headroom
 
-**Mechanism**: When `pipeline_dop = 0` (auto), StarRocks sets parallelism to `vCPUs/2`. For a 32-vCPU BE, each query spawns 16 pipeline threads. With 100 concurrent short queries, the OS scheduler must context-switch among 1600 threads — the overhead exceeds actual computation time. Setting `pipeline_dop = 1` reduces each query to one thread, allowing the OS to schedule them efficiently.
+**Mechanism**: Auto `pipeline_dop` spawns multiple pipeline threads per query per BE; at high concurrency the thread count explodes and the OS scheduler spends more time context-switching than executing. Setting `pipeline_dop = 1` reduces each query to one thread, letting the OS schedule them efficiently. For the exact auto-DOP formula, the concurrency-tier sizing table, and per-query/per-session override patterns, see [`../starrocks_concurrency_optimizer/SKILL.md`](../starrocks_concurrency_optimizer/SKILL.md#1-pipeline-dop-degree-of-parallelism).
 
 **Actions**:
 
@@ -387,7 +392,7 @@ ADD SQLBLACKLIST "select .* from [^w]*;";
 - `enable_query_cache = true` is set but QPS / latency have not improved
 - Workload uses high-cardinality `GROUP BY` or involves Shuffle before aggregation
 
-**Mechanism**: Query cache stores intermediate aggregation results per tablet. It only works when the aggregation can be partitioned by tablet without a prior shuffle. High-cardinality `GROUP BY` (e.g., GROUP BY user_id with 100M distinct users) produces too many unique cache keys to achieve meaningful reuse. Similarly, if a query requires data from multiple tablets for the same aggregation result, results cannot be cached per-tablet.
+**Mechanism**: Query cache stores per-tablet results and only works when the aggregation can be partitioned by tablet without a prior shuffle. High-cardinality `GROUP BY` (e.g., `GROUP BY user_id` with 100M distinct users) produces too many unique cache keys for meaningful reuse. For the full cache-invalidation model (partition/tablet-version keying, why fresh streaming data has low hit rates) and capacity-sizing guidance, see [`../starrocks_concurrency_optimizer/SKILL.md`](../starrocks_concurrency_optimizer/SKILL.md#7-query-cache).
 
 **Actions**:
 
@@ -493,12 +498,14 @@ top -b -n 1 | grep java
 - **Bucket key**: use the query's ID column as bucket key for bucket pruning
   (`WHERE order_id = 12345` scans only one tablet).
 
-**Primary Key Model Optimizations:**
+**Primary Key Model Optimizations (quick levers):**
 
 - **Persistent primary key index** (v3.1+): `"enable_persistent_index" = "true"` — moves index from memory to SSD.
 - **Hybrid row-column storage**: `"storage_type" = "column_with_row"` — adds row store for single-row point queries.
 - **Short-circuit read**: `SET enable_short_circuit = true` — bypasses execution engine for PK point queries.
   Verify with `EXPLAIN`: look for `Short Circuit Scan: true`.
+
+For the direct-lookup request path, which query shapes trigger it, and persistent-index sizing/CLOUD vs LOCAL tradeoffs, see [`../starrocks_concurrency_optimizer/SKILL.md`](../starrocks_concurrency_optimizer/SKILL.md#6-point-query-optimization-primary-key-tables).
 
 ---
 

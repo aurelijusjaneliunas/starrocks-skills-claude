@@ -3,6 +3,8 @@ name: starrocks-admin-query-monitor
 description: StarRocks query monitoring and resource management — slow query log, SHOW PROCESSLIST, information_schema.query_history, resource groups (CREATE RESOURCE GROUP), classifiers, CPU/memory/concurrency limits, query queuing, KILL QUERY, workload isolation, Audit Loader plugin
 ---
 
+> **Scope:** This is a reference guide for query monitoring and resource management — SHOW PROCESSLIST, slow query log, KILL QUERY, Audit Loader, and resource groups as one topic among several. For an incident runbook specifically on resource-group/query-queue causes (classifier mismatches, limit calibration, queue rejections), see [`../starrocks_resource_isolation/SKILL.md`](../starrocks_resource_isolation/SKILL.md).
+
 # StarRocks — Query Monitoring and Resource Management
 
 ## When to Use

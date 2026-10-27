@@ -18,6 +18,8 @@ related_cases:
 - case-004-disk-balancing
 ---
 
+> **Scope:** Incident-troubleshooting runbook for tablet-balance problems (balance too slow or too aggressive, stuck decommission, clone failures, unstable colocate groups). For storage-balancer architecture, load-score formula, BE add/decommission procedures, and capacity forecasting, see [`../starrocks_admin_storage_balancer/SKILL.md`](../starrocks_admin_storage_balancer/SKILL.md).
+
 # Balance & Tablet Scheduler Troubleshooting
 
 Investigation guide for tablet scheduling, cluster balance, replica repair, and

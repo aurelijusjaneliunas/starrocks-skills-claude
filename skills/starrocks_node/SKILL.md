@@ -40,6 +40,8 @@ related_cases:
 - case-031-fe-machine-memory-spike-traffic
 ---
 
+> **Scope:** This is an incident-troubleshooting runbook for abnormal BE/FE nodes — BE OOM/crash, FE deadlock, and FE GC pauses. For memory architecture and tuning reference (mem_limit/mem_tracker, spill, jemalloc, JVM/GC tuning, sizing), see [`../starrocks_memory_tuning/SKILL.md`](../starrocks_memory_tuning/SKILL.md).
+
 # Node Troubleshooting (BE Crash / OOM, FE Deadlock / GC)
 
 Investigation guide for BE-level crashes and out-of-memory events, FE deadlocks,

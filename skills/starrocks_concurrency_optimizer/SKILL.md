@@ -5,6 +5,12 @@ description: StarRocks high-concurrency optimization — pipeline_dop tuning for
 
 # StarRocks — High-Concurrency Optimization
 
+> For live incident triage (symptom-first troubleshooting: connection pool exhaustion,
+> FE planning CPU saturation, `pipeline_dop` too high, session-timeout-driven memory
+> volatility, ineffective query cache), see
+> [`../starrocks_high_concurrency/SKILL.md`](../starrocks_high_concurrency/SKILL.md).
+> This skill is the deeper reference for tuning theory and capacity design.
+
 ## When to Use
 
 Load this skill when the user needs to:
