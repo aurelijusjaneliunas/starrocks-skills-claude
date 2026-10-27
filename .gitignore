@@ -1,0 +1,19 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Zed
+.zed/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+.cursor/

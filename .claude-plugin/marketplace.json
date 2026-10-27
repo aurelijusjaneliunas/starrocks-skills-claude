@@ -1,0 +1,17 @@
+{
+  "name": "starrocks",
+  "description": "Starrocks management skills",
+  "owner": {
+    "name": "Aurelijus Janeliunas"
+  },
+  "plugins": [
+    {
+      "name": "starrocks",
+      "source": "./",
+      "description": "Starrocks management skills",
+      "version": "0.1.0",
+      "license": "MPL-2.0",
+      "keywords": ["rust", "design-patterns", "idioms", "anti-patterns", "code-review", "ffi"]
+    }
+  ]
+}

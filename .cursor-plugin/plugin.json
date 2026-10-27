@@ -1,0 +1,13 @@
+{
+  "name": "starrocks",
+  "displayName": "Starrocks",
+  "description": "Starrocks management skills",
+  "version": "0.1.0",
+  "author": {
+    "name": "Aurelijus Janeliunas"
+  },
+  "homepage": "https://github.com/rust-unofficial/patterns",
+  "license": "MPL-2.0",
+  "keywords": ["starrocks"],
+  "skills": "./skills/"
+}
