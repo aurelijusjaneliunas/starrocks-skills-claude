@@ -1,7 +1,6 @@
 ---
-name: data-lake
+name: starrocks-data-lake
 description: "Use when external catalog queries (Hive, Iceberg, S3, HDFS, Paimon) are failing, hanging, or returning stale data. Covers Hive Metastore connectivity errors, Kerberos authentication failures (keytab expiry, GSS errors, clock skew), S3 rate limiting and SSL issues, network saturation from HMS, and metadata cache TTL tuning for data freshness."
-version: 2.0.0
 category: data-lake
 keywords:
 - HMS
@@ -19,6 +18,7 @@ keywords:
 - Iceberg
 tools:
 - jstack
+- starrocks-mcp
 related_cases:
 - case-005-ssl-certificate
 - case-006-network-saturation

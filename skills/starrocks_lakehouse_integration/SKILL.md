@@ -1,6 +1,21 @@
 ---
 name: starrocks-lakehouse-integration
 description: StarRocks lakehouse integration — Iceberg/Hive/Delta external catalogs (HMS/Glue/REST), cross-catalog INSERT INTO SELECT, partition filter pushdown verification, external table statistics (ANALYZE on Iceberg), writing back to Iceberg from StarRocks (3.1+), Delta Lake catalog setup, Unity Catalog (3.2+), query federation across StarRocks + Iceberg + Hive in single SQL, cache invalidation (REFRESH EXTERNAL TABLE)
+category: lakehouse-integration
+keywords:
+- iceberg external catalog
+- hive catalog
+- delta lake catalog
+- cross-catalog insert
+- partition filter pushdown
+- external table statistics
+- query federation
+- iceberg time travel
+- schema evolution
+tools:
+- mysql
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Lakehouse Integration

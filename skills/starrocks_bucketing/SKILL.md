@@ -1,6 +1,20 @@
 ---
 name: starrocks-bucketing
 description: StarRocks bucketing (distribution) — DISTRIBUTED BY HASH vs RANDOM, bucket count selection formula, distribution key selection (high cardinality/join key), skew detection and prevention, colocate join setup (colocate_with property), bucket count modification (ALTER TABLE), auto bucket sizing (StarRocks 3.2+), tablet sizing target (1-10 GB)
+category: bucketing
+keywords:
+- distribution key
+- hash bucketing
+- random distribution
+- bucket count
+- colocate join
+- tablet skew
+- auto bucket sizing
+- alter table distributed
+tools:
+- mysql
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Bucketing (Data Distribution)

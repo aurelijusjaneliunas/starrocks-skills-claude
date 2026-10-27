@@ -1,7 +1,6 @@
 ---
-name: node
+name: starrocks-node
 description: "Use when a BE or FE node is abnormal: BE out-of-memory or crash, FE deadlock causing all queries to hang, FE Full GC pauses, or FE heap memory growth and leak. Covers mem_tracker curl analysis, large-memory-alloc log search (query_id → SQL), jstack + DeadLockChecker deadlock tracing, GC log analysis, and memory allocation flame graph interpretation."
-version: 2.0.0
 category: node
 keywords:
 - BE crash
@@ -24,6 +23,7 @@ tools:
 - tail
 - cat
 - analyze_logs.py
+- starrocks-mcp
 related_cases:
 - case-003-fe-deadlock
 - case-007-memory-tracking-leak

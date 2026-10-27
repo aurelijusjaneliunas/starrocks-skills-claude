@@ -1,6 +1,21 @@
 ---
 name: starrocks-query-optimizer
 description: StarRocks query optimization — vectorized execution engine, pipeline execution model, runtime filters (bloom/in/min-max), predicate pushdown, partition pruning, sort merge optimization, query hints (SET_VAR/JOIN hints), session variables for optimizer control, CBO statistics (ANALYZE TABLE/AUTO ANALYZE), query cache, pipeline parallelism tuning
+category: query-optimizer
+keywords:
+- query hints
+- runtime filter
+- predicate pushdown
+- cbo statistics
+- query cache
+- pipeline parallelism
+- join strategy
+- analyze table
+tools:
+- mysql
+- curl
+- starrocks-mcp
+related_cases: []
 ---
 
 > **Scope:** This is a reference guide for the query optimizer — CBO internals, vectorized/pipeline execution, query hints, and DOP tuning. See also: [`../starrocks_query/SKILL.md`](../starrocks_query/SKILL.md) for an incident runbook (query hangs, scan skew, join OOM), and [`../starrocks_explain_plan/SKILL.md`](../starrocks_explain_plan/SKILL.md) for EXPLAIN syntax and operator-node reference.

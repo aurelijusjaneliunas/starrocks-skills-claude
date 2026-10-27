@@ -1,6 +1,21 @@
 ---
 name: starrocks-cdc-pipeline
 description: StarRocks CDC pipeline — Flink CDC (flink-cdc-connectors) to StarRocks Primary Key table, Debezium + Kafka → Routine Load upsert, StarRocks Flink connector (exactly-once, DELETE semantics), schema change propagation, Debezium envelope parsing, multi-table CDC fan-out, dead letter queue for failed CDC events, lag monitoring
+category: cdc-pipeline
+keywords:
+- flink cdc
+- debezium
+- routine load
+- kafka cdc
+- exactly-once sink
+- schema change propagation
+- dead letter queue
+- cdc lag monitoring
+tools:
+- mysql
+- python3
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks CDC Pipeline

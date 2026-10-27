@@ -1,6 +1,21 @@
 ---
 name: starrocks-medallion-architecture
 description: StarRocks Medallion (Bronze/Silver/Gold) architecture — Bronze raw ingestion (Duplicate Key), Silver cleansed layer (Primary Key upsert/dedup), Gold aggregated layer (Aggregate Key or MV), incremental transform patterns (INSERT OVERWRITE partition, watermark-based), layer DDL patterns, CDC Bronze landing, dbt-compatible layer design, inter-layer INSERT SELECT pipelines
+category: medallion-architecture
+keywords:
+- medallion architecture
+- bronze layer ingestion
+- silver layer upsert
+- gold layer aggregation
+- cdc landing
+- incremental load
+- insert overwrite partition
+- routine load kafka
+tools:
+- mysql
+- python3
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Medallion Architecture

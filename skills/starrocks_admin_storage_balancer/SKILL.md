@@ -1,6 +1,22 @@
 ---
 name: starrocks-admin-storage-balancer
 description: StarRocks storage balancing — tablet distribution across BEs, disk skew detection (SHOW BACKENDS disk usage), cluster_balance analysis (SHOW PROC '/cluster_balance'), balance_load_score_threshold tuning, tablet migration monitoring, BE decommission, adding new BE nodes, storage capacity forecasting, imbalance alerts
+category: admin-storage-balancer
+keywords:
+- tablet balance
+- disk skew
+- BE decommission
+- load score threshold
+- cluster_balance
+- capacity forecasting
+- tablet migration
+- adding BE nodes
+tools:
+- mysql
+- curl
+- awk
+- starrocks-mcp
+related_cases: []
 ---
 
 > **Scope:** Reference/admin guide for tablet distribution concepts, the load-score formula, BE add/decommission procedures, and capacity forecasting. For an incident-troubleshooting runbook (balance too slow or too aggressive, stuck decommission, clone failures, unstable colocate groups), see [`../starrocks_balance/SKILL.md`](../starrocks_balance/SKILL.md).

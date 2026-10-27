@@ -1,6 +1,20 @@
 ---
 name: starrocks-concurrency-optimizer
 description: StarRocks high-concurrency optimization — pipeline_dop tuning for BI workloads, resource groups for workload isolation (short_query type), query queue configuration, FE connection pool, tablet scan parallelism, point query optimization (Primary Key table direct lookup), query cache for repeated dashboard queries, BE thread pool tuning
+category: concurrency-optimizer
+keywords:
+- pipeline dop
+- resource groups
+- query queue
+- connection pool
+- point query
+- persistent index
+- query cache
+- thread pool tuning
+tools:
+- mysql
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks — High-Concurrency Optimization

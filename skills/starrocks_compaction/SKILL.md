@@ -1,7 +1,6 @@
 ---
-name: compaction
+name: starrocks-compaction
 description: "Use when compaction score is sustained above 100, imports are failing with 'too many versions', or query MERGE time is elevated. Covers three root causes: import rate exceeding cumulative compaction throughput (Cause A), batch DELETE creating delete-predicate version explosion (Cause B), and large tablet where base compaction is not self-triggering (Cause C). Shared-nothing deployments only — for shared-data see shared-data/SKILL.md."
-version: 3.0.0
 category: compaction
 keywords:
 - compaction
@@ -25,6 +24,7 @@ tools:
 - wc
 - grep
 - tail
+- starrocks-mcp
 related_cases:
 - case-014-scan-skew
 - case-003-fe-deadlock

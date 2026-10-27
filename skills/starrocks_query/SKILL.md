@@ -1,7 +1,6 @@
 ---
-name: query
+name: starrocks-query
 description: "Use when queries are slow, hanging, or returning wrong results. Covers the full FE→BE query hang flow, profile-based bottleneck analysis (scan skew, MERGE time dominance, join OOM, runtime filter), predicate pushdown failures, and bug localization via session variable exclusion. Start here for any query performance complaint on a StarRocks cluster."
-version: 2.0.0
 category: query
 keywords:
 - query hang
@@ -23,6 +22,7 @@ tools:
 - strace
 - netstat
 - analyze_logs.py
+- starrocks-mcp
 related_cases:
 - case-014-scan-skew
 - case-015-memory-volatility

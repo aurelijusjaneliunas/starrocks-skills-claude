@@ -1,6 +1,21 @@
 ---
 name: starrocks-realtime-modeling
 description: StarRocks real-time data modeling — Primary Key table streaming upserts (Flink/Kafka Routine Load), mutable dimension tables (partial column UPDATE), real-time pre-aggregation with Aggregate Key + streaming inserts, Routine Load for Kafka CDC, real-time materialized view refresh, low-latency BI patterns, latency vs consistency trade-offs
+category: realtime-modeling
+keywords:
+- primary key table
+- streaming upsert
+- partial column update
+- routine load
+- flink connector
+- cdc debezium
+- aggregate key table
+- latency vs consistency
+tools:
+- mysql
+- curl
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks — Real-Time Data Modeling

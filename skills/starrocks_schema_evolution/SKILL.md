@@ -1,6 +1,22 @@
 ---
 name: starrocks-schema-evolution
 description: StarRocks schema evolution — ALTER TABLE ADD/DROP/MODIFY/REORDER COLUMN, column type widening rules, adding columns to Aggregate/Unique/Primary Key tables, schema change types (direct vs linked vs sorted), SHOW ALTER TABLE COLUMN progress, rollback safety, backward-compatible patterns, dbt model evolution, zero-downtime migration checklist
+category: schema-evolution
+keywords:
+- alter table add column
+- column type widening
+- schema change type
+- reorder columns
+- zero-downtime migration
+- dbt on_schema_change
+- expand-contract pattern
+- drop column
+tools:
+- mysql
+- dbt
+- bash
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks — Schema Evolution

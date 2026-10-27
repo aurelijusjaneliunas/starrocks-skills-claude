@@ -1,6 +1,20 @@
 ---
 name: starrocks-files-ingestion
 description: StarRocks file ingestion — FILES() table function (SELECT/INSERT from S3/HDFS Parquet/ORC/CSV without CREATE TABLE), Iceberg external catalog (HMS/Glue/REST), CREATE EXTERNAL CATALOG, cross-catalog INSERT INTO SELECT, schema auto-detection, partition filter pushdown on external tables, SHOW CREATE CATALOG, external table DDL patterns
+category: files-ingestion
+keywords:
+- files table function
+- external catalog
+- iceberg catalog
+- hive metastore
+- s3 parquet
+- ctas schema detection
+- partition filter pushdown
+- broker load
+tools:
+- mysql
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Files Ingestion & External Catalogs

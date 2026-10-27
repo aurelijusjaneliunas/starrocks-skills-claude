@@ -1,6 +1,21 @@
 ---
 name: starrocks-cbo
 description: StarRocks cost-based optimizer — ANALYZE TABLE (full/sample/histogram/predicate columns), AUTO ANALYZE configuration, statistics storage (_statistics_ database), SHOW ANALYZE STATUS, stale statistics detection, cardinality estimation failures, CBO join hints (LEADING/broadcast/shuffle), EXPLAIN COSTS reading, multi-column statistics (3.5+)
+category: cbo
+keywords:
+- analyze table
+- statistics collection
+- histogram statistics
+- auto analyze
+- explain costs
+- cardinality estimation
+- join hints
+- stale statistics
+tools:
+- mysql
+- python3
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Cost-Based Optimizer (CBO)

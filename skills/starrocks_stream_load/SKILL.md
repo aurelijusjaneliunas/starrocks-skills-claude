@@ -1,6 +1,21 @@
 ---
 name: starrocks-stream-load
 description: StarRocks Stream Load — HTTP PUT API (curl/Python requests), CSV/JSON format parameters (column_separator/jsonpaths/strip_outer_array), columns mapping, partial_update for Primary Key tables, label idempotency, max_filter_ratio, timeout tuning, merge commit mode (3.4+), response JSON parsing, Python bulk loader pattern, error diagnosis
+category: stream-load
+keywords:
+- stream load
+- http put api
+- partial update
+- label idempotency
+- merge commit mode
+- max_filter_ratio
+- error url diagnosis
+- bulk loader
+tools:
+- curl
+- python3
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Stream Load

@@ -1,6 +1,21 @@
 ---
 name: starrocks-self-healing
 description: StarRocks self-healing automation — auto-restart failed Routine Load jobs (detect PAUSED/CANCELLED + RESUME), rebalance tablet distribution after BE add/remove (REBALANCE command), trigger manual compaction for high-score tablets, auto-ANALYZE stale statistics, partition management (auto-drop old partitions), dead load label cleanup, BE disk space alerts + auto-tiering, scheduled health check + remediation agent
+category: self-healing
+keywords:
+- auto-restart routine load
+- compaction backlog
+- stale statistics
+- partition retention
+- dead load label cleanup
+- health check remediation
+- airflow automation
+- tablet rebalance
+tools:
+- python3
+- pymysql
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Self-Healing Automation

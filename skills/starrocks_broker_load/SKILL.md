@@ -1,6 +1,22 @@
 ---
 name: starrocks-broker-load
 description: StarRocks Broker Load — LOAD DATA from S3/HDFS/GCS/MinIO/Azure, CSV/Parquet/ORC format support, column mapping expressions, multi-table atomic load, SHOW LOAD status polling, CANCEL LOAD, S3 credential patterns (access key/IAM role/instance profile), parallelism tuning, Airflow integration, wildcard file paths
+category: broker-load
+keywords:
+- broker load
+- s3 load
+- hdfs load
+- parquet load
+- multi-table atomic load
+- show load
+- cancel load
+- load parallelism
+- airflow integration
+tools:
+- mysql
+- python3
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Broker Load

@@ -1,6 +1,21 @@
 ---
 name: starrocks-data-quality-guardian
 description: StarRocks data quality — freshness queries (MAX(updated_at) vs expected SLA), duplicate detection on Primary Key tables, null anomaly SQL (column-level null rate vs baseline), volume drift detection (day-over-day ratio), cross-table referential integrity checks, data completeness for partitions, StarRocks-specific quality checks (tablet health, compaction lag, replication factor), Python DQ scan class
+category: data-quality-guardian
+keywords:
+- freshness check
+- duplicate detection
+- null rate analysis
+- volume anomaly detection
+- referential integrity
+- tablet health
+- compaction status
+- data quality scanner
+tools:
+- mysql
+- python3
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Data Quality Guardian

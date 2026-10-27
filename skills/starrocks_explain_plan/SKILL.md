@@ -1,6 +1,21 @@
 ---
 name: starrocks-explain-plan
 description: StarRocks EXPLAIN plan reading — EXPLAIN/EXPLAIN VERBOSE/EXPLAIN COSTS output structure, operator nodes (OlapScanNode/HashJoinNode/AggregationNode/ExchangeNode/SortNode/ProjectNode), reading fragment instances, identifying bottlenecks (shuffle exchange cost, large scan rows, memory spill), runtime filter nodes, partition pruning in scan, query profile (SHOW PROFILELIST/EXPLAIN ANALYZE)
+category: explain-plan
+keywords:
+- explain plan
+- explain analyze
+- query profile
+- runtime filter
+- partition pruning
+- join strategy
+- cardinality estimate
+- mv query rewrite
+- shuffle cost
+tools:
+- mysql
+- starrocks-mcp
+related_cases: []
 ---
 
 > **Scope:** This is a reference guide for EXPLAIN syntax, operator-node reference, and reading query plans/profiles. See also: [`../starrocks_query/SKILL.md`](../starrocks_query/SKILL.md) for an incident runbook (query hangs, scan skew, join OOM), and [`../starrocks_query_optimizer/SKILL.md`](../starrocks_query_optimizer/SKILL.md) for CBO internals and execution/hint tuning.

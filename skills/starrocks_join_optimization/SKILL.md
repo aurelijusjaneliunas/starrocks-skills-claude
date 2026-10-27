@@ -1,6 +1,21 @@
 ---
 name: starrocks-join-optimization
 description: StarRocks join optimization — broadcast join (small dimension to all BEs), shuffle/hash join (repartition both sides), colocate join (no network transfer, same distribution key), bucket shuffle join, nested loop join (cross join/non-equi), join strategy selection rules, runtime filter effect on joins, join hints, EXPLAIN join strategy verification, skew join handling
+category: join-optimization
+keywords:
+- broadcast join
+- colocate join
+- bucket shuffle join
+- shuffle hash join
+- nested loop join
+- join skew
+- runtime filter
+- join hint
+- join reorder
+tools:
+- mysql
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Join Optimization

@@ -1,6 +1,21 @@
 ---
 name: starrocks-realtime-analytics
 description: StarRocks real-time analytics — Kafka → Routine Load → Primary Key table for sub-second freshness, low-latency BI query patterns, real-time dashboard design (materialized view for pre-aggregation), metric store patterns, window-based freshness for streaming dashboards, colocate join for real-time multi-table queries, resource group isolation for OLAP vs ingestion
+category: realtime-analytics
+keywords:
+- real-time dashboard
+- routine load
+- primary key table
+- colocate join
+- resource group isolation
+- materialized view pre-aggregation
+- freshness monitoring
+- rolling window metrics
+tools:
+- mysql
+- python3
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Real-Time Analytics

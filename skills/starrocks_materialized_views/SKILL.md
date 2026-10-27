@@ -1,6 +1,21 @@
 ---
 name: starrocks-materialized-views
 description: StarRocks materialized views — synchronous MV (rollup/aggregate acceleration), asynchronous MV (CREATE MATERIALIZED VIEW REFRESH ASYNC/MANUAL/SCHEDULED, partition-aware refresh, query rewrite, nested MVs, MV on Iceberg/Hive external tables), SHOW MATERIALIZED VIEWS, ALTER/REFRESH/DROP MV, transparent query rewrite via EXPLAIN, use_mv hint
+category: materialized-views
+keywords:
+- synchronous materialized view
+- asynchronous materialized view
+- query rewrite
+- partition-aware refresh
+- nested materialized view
+- mv refresh schedule
+- mv rewrite staleness
+- rollup index
+tools:
+- mysql
+- python3
+- starrocks-mcp
+related_cases: []
 ---
 
 > **Scope:** This is a design/reference guide for materialized views — DDL syntax, sync vs. async MVs, partition-aware refresh, and management commands. For incident troubleshooting (refresh OOM, timeout, inactive MVs, rewrite misses, FE-restart schedule loss), see [`../starrocks_materialized_view/SKILL.md`](../starrocks_materialized_view/SKILL.md).

@@ -1,7 +1,6 @@
 ---
-name: deployment
+name: starrocks-deployment
 description: "Use when FE or BE processes fail to start or stay alive. Covers port conflicts (YARN co-location), missing meta or storage directories, multi-NIC priority_networks misconfiguration, clock drift causing replica delta errors, BDB journal corruption blocking FE replay, HMS blocking FE startup, and SSL certificate expiry causing partial availability. Includes startup log triage for both FE and BE."
-version: 2.0.0
 category: deployment
 keywords:
 - FE startup
@@ -14,6 +13,7 @@ keywords:
 - NTP
 tools:
 - ss
+- starrocks-mcp
 related_cases:
 - case-005-ssl-certificate
 ---

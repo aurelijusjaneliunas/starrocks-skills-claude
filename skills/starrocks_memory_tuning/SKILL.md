@@ -1,6 +1,26 @@
 ---
 name: starrocks-memory-tuning
 description: StarRocks memory tuning — BE memory architecture (mem_limit, query pool, load pool, compaction pool, metadata cache), query memory limits (query_mem_limit session var), memory spill to disk (spill_mode), OOM analysis (be.out log), mem_tracker hierarchy, FE heap tuning (JAVA_OPTS), Primary Key table persistent index memory, jemalloc tuning
+category: memory-tuning
+keywords:
+- query mem limit
+- memory oom
+- spill to disk
+- page cache tuning
+- persistent index memory
+- mem_tracker
+- fe heap gc tuning
+- jemalloc tuning
+- be mem_limit
+tools:
+- mysql
+- curl
+- python3
+- grep
+- dmesg
+- jstat
+- starrocks-mcp
+related_cases: []
 ---
 
 > **Scope:** This is a design/reference guide for memory architecture and tuning — mem_limit/mem_tracker, spill, jemalloc, JVM/GC tuning, and sizing. For incident troubleshooting of an abnormal BE/FE node (BE OOM/crash, FE deadlock, FE GC pauses), see [`../starrocks_node/SKILL.md`](../starrocks_node/SKILL.md).

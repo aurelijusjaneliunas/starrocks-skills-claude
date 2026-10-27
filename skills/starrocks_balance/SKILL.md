@@ -1,7 +1,6 @@
 ---
-name: balance
+name: starrocks-balance
 description: "Use when the tablet scheduler is unhealthy: replicas are missing, clone tasks are failing or timing out, balance is too slow (disk usage skewed) or too aggressive (impacting imports), BE decommission is stuck, or colocate groups are unstable. Covers SHOW PROC /cluster_balance analysis, fe_tablet_schedules system table, clone slot tuning, and decommission unblocking via recycle-bin and replica count checks."
-version: 2.0.0
 category: balance
 keywords:
 - balance
@@ -14,6 +13,7 @@ keywords:
 - disk balance
 tools:
 - find
+- starrocks-mcp
 related_cases:
 - case-004-disk-balancing
 ---

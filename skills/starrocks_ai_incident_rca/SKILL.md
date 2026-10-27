@@ -1,6 +1,23 @@
 ---
 name: starrocks-ai-incident-rca
 description: StarRocks AI incident RCA — autonomous root cause analysis agent for FE/BE failures, memory spike diagnosis (BE heap/process memory), Routine Load pause RCA (ErrorLogUrls + error patterns), Kafka consumer lag spike analysis, compaction backlog detection, tablet replication failures, OOM kill patterns, query timeout clusters, FE GC pressure detection, structured incident report generation
+category: ai-incident-rca
+keywords:
+- root cause analysis
+- BE OOM
+- routine load pause
+- kafka lag spike
+- query timeout cluster
+- tablet replication failure
+- incident report
+- on-call diagnosis
+tools:
+- python3
+- mysql
+- curl
+- grep
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks AI Incident RCA

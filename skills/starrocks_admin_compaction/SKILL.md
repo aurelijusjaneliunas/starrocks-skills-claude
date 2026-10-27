@@ -1,6 +1,28 @@
 ---
 name: starrocks-admin-compaction
 description: StarRocks compaction tuning — base compaction vs cumulative compaction, compaction score analysis, write amplification reduction, BE config parameters (compaction_threads/min_cumulative_compaction_num_singleton_deltas/max_compaction_candidate_num), SHOW PROC '/compactions' (shared-data only), manual compaction trigger, Primary Key table compaction, rowset management
+category: admin-compaction
+keywords:
+- compaction score
+- cumulative compaction
+- base compaction
+- write amplification
+- rowset accumulation
+- primary key table
+- delete vector
+- manual compaction trigger
+tools:
+- mysql
+- curl
+- grep
+- df
+- cat
+- cgcreate
+- cgset
+- cgexec
+- python3
+- starrocks-mcp
+related_cases: []
 ---
 
 > **Scope:** Reference/admin guide for compaction architecture, BE config parameters, Primary Key table compaction internals, manual trigger commands, and Grafana/Prometheus monitoring setup. For an incident-troubleshooting runbook (import pile-up, batch-DELETE version explosion, large-tablet base compaction not self-triggering) in shared-nothing deployments, see [`../starrocks_compaction/SKILL.md`](../starrocks_compaction/SKILL.md).

@@ -1,6 +1,23 @@
 ---
 name: starrocks-routine-load-kafka
 description: StarRocks Routine Load for Kafka — CREATE ROUTINE LOAD DDL (all PROPERTIES/KAFKA clause parameters), JSON/CSV/Avro format config, desired_concurrent_number tuning, SHOW ROUTINE LOAD columns, PAUSE/RESUME/ALTER/STOP, consumer lag monitoring, error log analysis, exactly-once semantics, Schema Registry for Avro, Kafka SASL/SSL config, idempotent upsert to Primary Key table
+category: routine-load-kafka
+keywords:
+- routine load
+- kafka ingestion
+- consumer lag
+- sasl ssl
+- schema registry avro
+- desired_concurrent_number
+- cdc upsert
+- error log analysis
+tools:
+- mysql
+- curl
+- python3
+- bash
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Routine Load — Kafka Integration

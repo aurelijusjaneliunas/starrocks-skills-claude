@@ -1,6 +1,22 @@
 ---
 name: starrocks-admin-backup-restore
 description: StarRocks backup and restore — CREATE REPOSITORY (S3/HDFS/NFS), BACKUP DATABASE/TABLE, SHOW BACKUP/RESTORE status, RESTORE with partition granularity, cross-cluster restore, incremental backup strategy, snapshot lifecycle, disaster recovery RTO/RPO targets
+category: admin-backup-restore
+keywords:
+- backup restore
+- disaster recovery
+- repository setup
+- snapshot lifecycle
+- RTO RPO
+- cross-cluster restore
+- partition backup
+- restore drill
+tools:
+- mysql
+- python3
+- aws
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks — Backup and Restore

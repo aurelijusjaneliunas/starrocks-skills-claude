@@ -1,6 +1,21 @@
 ---
 name: starrocks-ai-query-autotuner
 description: StarRocks AI query autotuner — autonomous SQL optimization agent workflow (EXPLAIN COSTS → analyze → recommend), materialized view recommendation from slow query log, index recommendation (bitmap/bloom filter), partition pruning diagnosis, join order hints generation, statistics staleness detection and auto-ANALYZE trigger, slow query pattern classification, query rewrite suggestions
+category: ai-query-autotuner
+keywords:
+- autotuner agent
+- explain costs
+- materialized view recommendation
+- cardinality estimation
+- join order hints
+- statistics staleness
+- slow query log
+- query rewrite
+tools:
+- python3
+- mysql
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks AI Query Autotuner

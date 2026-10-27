@@ -1,6 +1,20 @@
 ---
 name: starrocks-aggregation-optimizer
 description: StarRocks aggregation optimization — one-phase vs two-phase aggregation, pre-aggregation pushdown to scan, Aggregate Key table automatic merge, GROUP BY on distribution key (local aggregation), COUNT DISTINCT optimization (multi-phase), HLL/BITMAP approximate aggregation, aggregation spill tuning, EXPLAIN aggregation nodes
+category: aggregation-optimizer
+keywords:
+- two-phase aggregation
+- pre-aggregation
+- count distinct
+- HLL approximate
+- BITMAP aggregation
+- aggregation spill
+- EXPLAIN aggregation
+- group by distribution key
+tools:
+- mysql
+- starrocks-mcp
+related_cases: []
 ---
 
 # StarRocks Aggregation Optimizer
