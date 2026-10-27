@@ -16,6 +16,8 @@ related_cases:
 - case-012-mv-refresh-failures
 ---
 
+> **Scope:** This is an incident-troubleshooting runbook for materialized view failures (refresh OOM, timeout, inactive MVs, rewrite misses, FE-restart schedule loss). For MV design/reference — DDL syntax, sync vs. async MVs, partition-aware refresh, and management commands — see [`../starrocks_materialized_views/SKILL.md`](../starrocks_materialized_views/SKILL.md).
+
 # Materialized View Troubleshooting
 
 Investigation guide for async MV refresh failures, refresh timeouts, MV inactivation,
